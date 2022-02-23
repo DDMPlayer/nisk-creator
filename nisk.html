@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Nisk Creator</title>
+		<script src="https://cdnjs.deepai.org/deepai.min.js"></script>
+		<style>
+			
+			/*
+			No, i'm not stupid, i know you can link to a separate file for
+			css, and i know this is a crappy way of doing this, but i want
+			to make this as portable as digitally possible, so no external
+			files, please.                               - DDMPlayer, 2022
+			*/
+
+			body {
+				background-color: #060608;
+			}
+			
+			* {
+				color: #f0f0ff;
+				margin-top: 20px;
+				font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+				text-align: center;
+			}
+
+			img {
+				border: none;
+				border-radius: 20px;
+			}
+
+			canvas {
+				border: none;
+				border-radius: 10px;
+			}
+
+			input {
+  				border: none;
+				border-radius: 5px;
+				background-color: #161618;
+			}
+		</style>
+	</head>
+	<body>
+		<br>
+		<h1 id="title_name">The Nisk Creator</h1>
+		
+		<p><img id="nisk_image" src="https://cdn.discordapp.com/attachments/720429994685235292/946088812382154782/output.png" style="width: 512px; height: 512px;" /></p>
+		
+		<p><input name="Generate a Nisk" type="button" value="Generate a Nisk" onclick="gennisk();"/></p>
+		<!-- <p><input name="Generate a .sadmwpoa" type="button" value="Generate a ERROR" onclick="genma();"/></p> -->
+		<p id="gen_nisk_txt">Generating...</p>
+
+		<br>
+		<p id="quote_nisk">"funi dogie" - DDMPlayer, 2022</p>
+
+		<canvas id="myCanvas" width="512" height="768">
+		</canvas>
+		
+		<script>
+			deepai.setApiKey('7ab8ae59-153e-456a-ab2b-a9153459ccc2');
+			document.getElementById('gen_nisk_txt').style.display = "none";
+			document.getElementById("myCanvas").style.display = "none";
+
+			function getAdjective() {
+				var list = ["adorable","adventurous","aggressive","agreeable","alert","alive","amused","angry","annoyed","annoying","anxious","arrogant","ashamed","attractive","average","awful","bad","beautiful","better","bewildered","black","bloody","blue","blue-eyed","blushing","bored","brainy","brave","breakable","bright","busy","calm","careful","cautious","charming","cheerful","clean","clear","clever","cloudy","clumsy","colorful","combative","comfortable","concerned","condemned","confused","cooperative","courageous","crazy","creepy","crowded","cruel","curious","cute","dangerous","dark","dead","defeated","defiant","delightful","depressed","determined","different","difficult","disgusted","distinct","disturbed","dizzy","doubtful","drab","dull","eager","easy","elated","elegant","embarrassed","enchanting","encouraging","energetic","enthusiastic","envious","evil","excited","expensive","exuberant","fair","faithful","famous","fancy","fantastic","fierce","filthy","fine","foolish","fragile","frail","frantic","friendly","frightened","funny","gentle","gifted","glamorous","gleaming","glorious","good","gorgeous","graceful","grieving","grotesque","grumpy","handsome","happy","healthy","helpful","helpless","hilarious","homeless","homely","horrible","hungry","hurt","ill","important","impossible","inexpensive","innocent","inquisitive","itchy","jealous","jittery","jolly","joyous","kind","lazy","light","lively","lonely","long","lovely","lucky","magnificent","misty","modern","motionless","muddy","mushy","mysterious","nasty","naughty","nervous","nice","nutty","obedient","obnoxious","odd","old-fashioned","open","outrageous","outstanding","panicky","perfect","plain","pleasant","poised","poor","powerful","precious","prickly","proud","putrid","puzzled","quaint","real","relieved","repulsive","rich","scary","selfish","shiny","shy","silly","sleepy","smiling","smoggy","sore","sparkling","splendid","spotless","stormy","strange","stupid","successful","super","talented","tame","tasty","tender","tense","terrible","thankful","thoughtful","thoughtless","tired","tough","troubled","ugliest","ugly","uninterested","unsightly","unusual","upset","uptight","vast","victorious","vivacious","wandering","weary","wicked","wide-eyed","wild","witty","worried","worrisome","wrong","zany","zealous"];
+				var num = Math.round(Math.random()*list.length);
+				console.log(num);
+				return list[num];
+			}
+
+			function genQuote() {
+				document.getElementById('quote_nisk').innerHTML = "The Nisk is the most "+getAdjective()+" dog breed.";
+			}
+
+			function formatThisPlease(text) {
+				var arr = text.split(" ");
+				var final = "";
+
+				for(var i = 0; i < arr.length; i++) {
+					if(i == 4) final += "\n";
+					final += arr[i];
+					if(i != arr.length-1 && i != 3) final += " ";
+				}
+
+				return final.split("\n");
+			}
+
+			function createImage(image) {
+				var c = document.getElementById("myCanvas");
+				var ctx = c.getContext("2d");
+
+				ctx.beginPath();
+				ctx.rect(0, 0, 512, 768);
+				ctx.fillStyle = "#060608";
+				ctx.fill();
+
+				ctx.fillStyle = "#f0f0ff";
+				ctx.textAlign = "center";
+				ctx.textBaseline = "middle";
+				ctx.font = "bold 48px Trebuchet MS";
+				ctx.fillText("THE NISK CREATOR", 256, 64);
+				ctx.font = "24px Trebuchet MS";
+				ctx.fillText("a fake dog generator", 256, 90);
+				ctx.font = "32px Trebuchet MS";
+				var lines = formatThisPlease(document.getElementById('quote_nisk').innerHTML);
+				ctx.fillText(lines[0], 256, 685);
+				ctx.fillText(lines[1], 256, 725);
+				
+				var img = new Image();
+				img.onload = function() {
+					ctx.drawImage(img, 0, 128);
+				};
+				img.src = image;
+
+				clipboardSave();
+			}
+
+			function clipboardSave() {
+				const canvas = document.getElementById("myCanvas");
+
+				let img = document.createElement('img'); 
+				img.crossOrigin = "anonymous";
+				img.src = canvas.toDataURL();
+
+				let div = document.createElement('div');
+				div.contentEditable = true;
+				div.appendChild( img );
+				document.body.appendChild( div );
+				div.focus();
+				window.getSelection().selectAllChildren( div );
+				document.execCommand('Copy');  // technically deprecated
+				document.body.removeChild( div );
+			}
+			
+			function genma() {
+				document.getElementById('gen_nisk_txt').style.display = "block";
+				
+				(async function() {
+				    var resp = await deepai.callStandardApi("text2img", {
+				            text: 'mA',
+				    });
+				    console.log(resp);
+				    
+				    document.getElementById('nisk_image').src = resp.output_url
+				    document.getElementById('title_name').innerHTML = "mA";
+				    document.getElementById('gen_nisk_txt').style.display = "none";
+					genQuote();
+					
+					document.getElementById('quote_nisk').innerHTML = "You cannot escape "+getAdjective()+" nightmares."
+					createImage(resp.output_url);
+				})()
+			}
+			
+			function gennisk() {
+				document.getElementById('gen_nisk_txt').style.display = "block";
+				
+				(async function() {
+				    var resp = await deepai.callStandardApi("text2img", {
+				            text: 'fnf fans be like:',
+				    });
+				    console.log(resp);
+				    
+				    document.getElementById('nisk_image').src = resp.output_url
+				    document.getElementById('title_name').innerHTML = "The Nisk Creator";
+				    document.getElementById('gen_nisk_txt').style.display = "none";
+					genQuote();
+					createImage(resp.output_url);
+				})()
+			}
+
+			createImage(document.getElementById('nisk_image').src);
+		</script>
+	</body>
+</html>
