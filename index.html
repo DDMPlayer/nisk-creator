@@ -109,7 +109,7 @@
 				ctx.font = "bold 48px Trebuchet MS";
 				ctx.fillText("THE NISK CREATOR", 256, 64);
 				ctx.font = "24px Trebuchet MS";
-				ctx.fillText("a fake dog generator", 256, 90);
+				ctx.fillText(((document.getElementById('title_name').innerHTML == 'mA') ? "in mA mode" : "a fake dog generator"), 256, 90);
 				ctx.font = "32px Trebuchet MS";
 				var lines = formatThisPlease(document.getElementById('quote_nisk').innerHTML);
 				ctx.fillText(lines[0], 256, 685);
