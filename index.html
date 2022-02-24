@@ -15,7 +15,7 @@
 		<p><img id="nisk_image" src="https://cdn.discordapp.com/attachments/720429994685235292/946088812382154782/output.png" style="width: 512px; height: 512px;" /></p>
 		
 		<p><input name="Generate a Nisk" type="button" value="Generate a Nisk" onclick="gennisk();"/></p>
-		<p><input id="ma_butt" name="Generate a mA" type="button" value="Generate a mA" onclick="genma();"/></p>
+		<p><input id="ma_butt_top" name="Generate a mA" type="button" value="Generate a mA" onclick="genma();"/></p>
 		<p id="gen_nisk_txt">Generating...</p>
 
 		<br>
@@ -32,7 +32,7 @@
 		</canvas>
 		
 		<p><input name="Generate a Nisk" type="button" value="Generate a Nisk" onclick="gennisk();"/></p>
-		<p><input id="ma_butt" name="Generate a mA" type="button" value="Generate a mA" onclick="genma();"/></p>
+		<p><input id="ma_butt_bot" name="Generate a mA" type="button" value="Generate a mA" onclick="genma();"/></p>
 		
 		<br>
 		<br>
@@ -49,8 +49,13 @@
 
 			var unlocked_ma = false;
 			if(getCookie('unlocked_ma') == 'true') unlocked_ma = true;
-			if(unlocked_ma) document.getElementById('ma_butt').style.display = "block";
-			else			document.getElementById('ma_butt').style.display = "none";
+			if(unlocked_ma) {
+				document.getElementById('ma_butt_bot').style.display = "block";
+				document.getElementById('ma_butt_top').style.display = "block";
+			} else {
+				document.getElementById('ma_butt_bot').style.display = "none";
+				document.getElementById('ma_butt_top').style.display = "none";
+			}
 			
 			function getCookie(cname) {
 				let name = cname + "=";
