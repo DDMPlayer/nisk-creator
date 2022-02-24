@@ -18,7 +18,7 @@
 		<p><button class="knopf wide small" onclick="gennisk();">
 			Generate A Nisk
 		</button></p>
-		<p><button class="knopf wide small genma" onclick="genma();">
+		<p><button id="genma" class="knopf wide small genma flat traced" onclick="genma();">
 			Generate A mA
 		</button></p>
 		<p id="gen_nisk_txt">Generating...</p>
@@ -39,7 +39,9 @@
 		<p><button class="knopf wide small" onclick="gennisk();">
 			Generate A Nisk
 		</button></p>
-		<p><input id="ma_butt" name="Generate a mA" type="button" value="Generate a mA" onclick="genma();"/></p>
+		<p><button id="genma" class="knopf wide small genma flat traced" onclick="genma();">
+			Generate A mA
+		</button></p>
 		
 		<br>
 		<br>
@@ -56,7 +58,7 @@
 
 			var unlocked_ma = false;
 			if(getCookie('unlocked_ma') == true) unlocked_ma = true;
-			if(unlocked_ma) document.getElementById('ma_butt').style.display = "block";
+			if(unlocked_ma) { document.getElementById('ma_butt').style.display = "block";document.getElementById('ma_butt_e').style.display = "block";}
 			else			document.getElementById('ma_butt').style.display = "none";
 			
 			function getCookie(cname) {
