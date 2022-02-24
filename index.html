@@ -49,10 +49,7 @@
 
 			var unlocked_ma = false;
 			if(getCookie('unlocked_ma') == 'true') unlocked_ma = true;
-			if(unlocked_ma) {
-				document.getElementById('ma_butt_bot').style.display = "block";
-				document.getElementById('ma_butt_top').style.display = "block";
-			} else {
+			if(!unlocked_ma) {
 				document.getElementById('ma_butt_bot').style.display = "none";
 				document.getElementById('ma_butt_top').style.display = "none";
 			}
