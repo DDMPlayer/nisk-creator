@@ -9,7 +9,9 @@ body {
     text-align: center;
 }
 
-
+.genma {
+    --knopf-hue: 356;
+}
 
 img {
     border: none;
