@@ -114,6 +114,10 @@
 				var lines = formatThisPlease(document.getElementById('quote_nisk').innerHTML);
 				ctx.fillText(lines[0], 256, 685);
 				ctx.fillText(lines[1], 256, 725);
+				ctx.fillStyle = "#ffdf0d";
+				ctx.font = "24px Trebuchet MS";
+				ctx.fillText(((document.getElementById('quote_nisk').innerHTML.split(" ")[5] == 'undefined') ? "WOW! You got the lucky undefined!" : ""), 256, 750);
+				ctx.fillStyle = "#161618";
 				ctx.textAlign = "right";
 				ctx.textBaseline = "bottom";
 				ctx.font = "bold 12px Trebuchet MS";
