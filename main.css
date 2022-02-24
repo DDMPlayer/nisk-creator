@@ -1,12 +1,18 @@
 body {
-    background-color: #060608;
+    background-color: #dfe6e9;
 }
 
 * {
-    color: #f0f0ff;
+    color: #2d3436;
     margin-top: 20px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: center;
+}
+
+canvas, img {
+    -webkit-box-shadow: 20px 20px 0px 8px rgba(123, 134, 158, 1);
+    -moz-box-shadow: 20px 20px 0px 8px rgba(123, 134, 158, 1);
+    box-shadow: 20px 20px 0px 8px rgba(123, 134, 158, 1);
 }
 
 .genma {
