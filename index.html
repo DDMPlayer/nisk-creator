@@ -38,6 +38,7 @@
 		<br>
 		<br>
 		<br>
+		<br>
 		
 		<bgfoot id="footer"></bgfoot>
 
@@ -145,6 +146,7 @@
 				    document.getElementById('gen_nisk_txt').style.display = "none";
 					document.getElementById('quote_nisk').style.display = "block";
 					genQuote();
+					createImage(document.getElementById('nisk_image').src);
 					
 					document.getElementById('quote_nisk').innerHTML = "You cannot escape "+getAdjective()+" nightmares."
 				})()
@@ -165,6 +167,7 @@
 				    document.getElementById('gen_nisk_txt').style.display = "none";
 					document.getElementById('quote_nisk').style.display = "block";
 					genQuote();
+					createImage(document.getElementById('nisk_image').src);
 				})()
 			}
 
