@@ -48,7 +48,7 @@
 			document.getElementById('footer').innerHTML = "Made by DDMPlayer | "+version+" | Powered with DeepAI's text2img";
 
 			var unlocked_ma = false;
-			if(getCookie('unlocked_ma') == true) unlocked_ma = true;
+			if(getCookie('unlocked_ma') == 'true') unlocked_ma = true;
 			if(unlocked_ma) document.getElementById('ma_butt').style.display = "block";
 			else			document.getElementById('ma_butt').style.display = "none";
 			
