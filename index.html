@@ -113,10 +113,11 @@
 				if(document.getElementById('title_name').innerHTML == 'mA') {
 					ctx.fillText("Some things cannot ever", 256, 685);
 					ctx.fillText("be forgotten, ever.", 256, 725);
+				} else {
+					var lines = formatThisPlease(document.getElementById('quote_nisk').innerHTML);
+					ctx.fillText(lines[0], 256, 685);
+					ctx.fillText(lines[1], 256, 725);
 				}
-				var lines = formatThisPlease(document.getElementById('quote_nisk').innerHTML);
-				ctx.fillText(lines[0], 256, 685);
-				ctx.fillText(lines[1], 256, 725);
 				ctx.fillStyle = "#ffdf0d";
 				ctx.font = "24px Trebuchet MS";
 				if(document.getElementById('quote_nisk').innerHTML.split(" ")[5] == 'undefined') ctx.fillText("WOW! You got the lucky undefined!", 256, 750);
