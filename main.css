@@ -40,3 +40,10 @@ canvas {
     border-radius: 10px;
         border: 5px solid #f0f0ff;
 }
+
+@media only screen {
+    input {
+        width : 20%;
+        height: 10%;
+    }
+}
